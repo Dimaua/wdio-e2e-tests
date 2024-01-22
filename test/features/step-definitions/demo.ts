@@ -21,3 +21,30 @@ Then(/^URL should match (.*)$/, async function (expectedURL) {
     console.log(`>>>>>>> : ${expectedURL}`);
     await expect(url).toEqual(expectedURL)
 })
+
+/** 
+ * Web interactions
+ */
+
+Given(/^A web page is opened$/, async function () {
+    await browser.url("/inputs")
+    await browser.setTimeout({ implicit: 15000, pageLoad: 10000 })
+    //await browser.maximizeWindow()
+})
+
+When(/^Perform web inteactions$/, async function () {
+    let num = 12315;
+    let str = num.toString()
+    let el = await $(`[type=number]`);
+    //await el.setValue(str)
+    await el.click();
+
+    for (let i = 0; i < str.length; i++) {
+        let char = str.charAt(i)
+        await browser.pause(500)
+        await browser.keys(char)
+    }
+    await browser.pause(3000);
+
+
+})
