@@ -2,8 +2,10 @@
     "compilerOptions": {
         
         "moduleResolution": "node",
-        "module": "ESNext",
+        
+        
         "target": "es2022",
+        "module":"CommonJS",
         "lib": [
             "es2022",
             "dom"
@@ -29,5 +31,9 @@
     "include": [
         "test",
         "wdio.conf.ts"
-    ]
+    ],
+    "ts-node": {
+        "esm": true,
+        "experimentalSpecifierResolution": "node",
+    }
 }
